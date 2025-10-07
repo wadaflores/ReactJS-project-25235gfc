@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+
+import "bootswatch/dist/minty/bootstrap.min.css";
+import './App.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Container } from 'react-bootstrap';
+
+import Footer from './components/Footer';
+import Header from './components/Header';
+
+import Home from "./pages/Home";
+import Clients from "./pages/Clients";
+import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
+import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
+
+import { CartProvider } from "./context/CartContext";
 
 function App() {
-  const [count, setCount] = useState(0)
+    // const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+      <CartProvider>
+  
+        <div className='app-container'>
+    
+          <Router>
+            <Header/>
+            <Container fluid className="main-content my-2">
+              <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/products" element={<Products/>}/>
+                <Route path="/products/:id" element={<ProductDetail/>}/>
+                <Route path="/clients" element={<Clients/>}/>
+                <Route path="/contact" element={<Contact/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+              </Routes>
+  {/*   
+              <a href="https://vite.dev" target="_blank">
+                <img src={viteLogo} className="logo" alt="Vite logo" />
+              </a>
+              <a href="https://react.dev" target="_blank">
+                <img src={reactLogo} className="logo react" alt="React logo" />
+              </a>
+            <h1>Vite + React</h1>
+            <div className="card">
+              <button onClick={() => setCount((count) => count + 1)}>
+                count is {count}
+              </button>
+              <p>
+                Edit <code>src/App.jsx</code> and save to test HMR
+              </p>
+            </div>
+            <p className="read-the-docs">
+              Click on the Vite and React logos to learn more
+            </p>
+  */} 
+            </Container>
+            <Footer className=""/>
+          </Router>
+        </div>
+    </CartProvider>
+    )
 }
 
 export default App
