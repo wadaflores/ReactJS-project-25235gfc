@@ -17,7 +17,7 @@ export default function RandomUser(){
     if(!user) return <span><Spinner animation="border" size="sm" variant="success" />Loading...</span>
 
     return(
-        <div className="px-5 py-3">
+        <div className="mx-5 my-2" style={{width: "230px"}}>
             <img src={user.picture.large} alt={"usuario " + user.name.last} style={{ borderRadius: "50%" }}/>
             <h4 className="mb-0">{user.name.title} {user.name.first} <b>{user.name.last}</b></h4>
             <p>{user.email}</p>

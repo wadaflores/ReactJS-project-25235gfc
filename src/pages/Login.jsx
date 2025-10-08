@@ -4,38 +4,30 @@ import { Form, Button, Card, Container, Alert } from "react-bootstrap";
 
 export default function Login() {
     const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [showAlertSuccess, setShowAlertSuccess] = useState(false);
+    const [password, setPassword] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
       // (No validation)
-        if (email && message) {
-            setShowAlertSuccess(true);
-            setShowAlert(false);
-            setEmail("")
-            setMessage("")
+        if (email && password) {
+            localStorage.setItem("auth", "true");
+            navigate("/admin");
         } else {
-            setShowAlertSuccess(false);
             setShowAlert(true);
         }
     };
 
     return (
         <Container className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
-            {showAlertSuccess && (
-                <Alert variant="success" className="fs-6" onClose={() => setShowAlert(false)} style={{ maxWidth: "425px", width: "100%" }} dismissible>
-                    <strong>Well done!</strong> Message sent successfully! We'll contact you as soon as possible.
-                </Alert>
-            )}
             {showAlert && (
                 <Alert variant="danger" className="fs-6" onClose={() => setShowAlert(false)} dismissible  >
-                    <strong>Oh snap!</strong> Please enter both <b>email</b> and <b>message</b>.
+                    <strong>Oh snap!</strong> Please enter both <b>email</b> and <b>password</b>.
                 </Alert>
             )}
-            <Card className="p-4 shadow-sm" style={{ maxWidth: "425px", width: "100%" }}>
-                <h2 className="text-center mb-4">Contact Us</h2>
+            <Card className="p-4 shadow-sm" style={{ maxWidth: "425px", width: "100%", height:"310px" }}>
+                <h2 className="text-center mb-4">Login</h2>
                 
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formEmail">
@@ -47,19 +39,18 @@ export default function Login() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Message</Form.Label>
+                    <Form.Group className="mb-3" controlId="formPassword">
+                        <Form.Label>Password</Form.Label>
                         <Form.Control
-                        as="textarea"
-                        rows={4}
-                        placeholder="Enter message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        type="password"
+                        placeholder="Enter password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     </Form.Group>
                     <div className="text-center">
                         <Button variant="info" type="submit" className="w-100">
-                            Send
+                            Login
                         </Button>
                     </div>
                 </Form>
@@ -67,4 +58,3 @@ export default function Login() {
         </Container>
     );
 }
-

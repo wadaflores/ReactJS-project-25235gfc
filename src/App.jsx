@@ -1,14 +1,12 @@
+//import reactLogo from './assets/react.svg';
+//import viteLogo from '/vite.svg';
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Container } from 'react-bootstrap';
 
 import "bootswatch/dist/minty/bootstrap.min.css";
 import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Container } from 'react-bootstrap';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -19,20 +17,20 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import Login from './pages/Login';
+import Admin from './pages/Admin';
 
 import { CartProvider } from "./context/CartContext";
+import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 function App() {
     // const [count, setCount] = useState(0)
-
     return (
       <CartProvider>
-  
         <div className='app-container'>
-    
           <Router>
             <Header/>
-            <Container fluid className="main-content my-2">
+            <Container fluid className="main-content">
               <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/products" element={<Products/>}/>
@@ -40,6 +38,8 @@ function App() {
                 <Route path="/clients" element={<Clients/>}/>
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/cart" element={<Cart/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/admin" element={<AuthenticatedRoute><Admin/></AuthenticatedRoute>}/>
               </Routes>
   {/*   
               <a href="https://vite.dev" target="_blank">
@@ -62,10 +62,10 @@ function App() {
             </p>
   */} 
             </Container>
-            <Footer className=""/>
+            <Footer/>
           </Router>
         </div>
-    </CartProvider>
+      </CartProvider>
     )
 }
 

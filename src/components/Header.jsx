@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Navbar, Nav, Form, Button, Row, Col } from "react-bootstrap";
 import reactLogo from '../assets/react.svg';
 import { useCart } from "../context/CartContext";
 
 export default function Header(){
     const { numCart } = useCart();
+    const navigate = useNavigate();
+    const isAuth = localStorage.getItem('auth')==='true';
+
+    const closeSession=()=>{
+        localStorage.removeItem('auth');
+        navigate('/login')
+    }
 
     return(
         <Navbar bg="primary" variant="dark" expand="lg" className="sticky-top">
@@ -25,16 +32,31 @@ export default function Header(){
                         <Nav.Link as={Link} to="/contact" className="text-md-center">
                             Contact
                         </Nav.Link>
+
+                        {isAuth && (
+                            <Nav.Link as={Link} to="/admin" className="text-md-center">
+                                | <span className="text-decoration-underline ms-2">Admin</span>
+                            </Nav.Link>
+                        )}
+
+                        {!isAuth ? (
+                            <Nav.Link as={Link} to="/login" className="text-md-center">
+                                <i className="bi bi-person-fill"></i>
+                            </Nav.Link>
+                        ) : (<div className="pt-1">
+                            <Button variant="outline-light" onClick={closeSession} className="btn-sm p-1">Log out</Button></div>
+                        )}
+                        
                     </Nav>
-                    <Nav.Link as={Link} to="/cart" className="me-2 ">
+                    <Nav.Link as={Link} to="/cart" className="me-2">
                         <Button className="px-2 position-relative text-white">
                             <i className="bi bi-cart fs-5"></i>
                             {numCart > 0 && (
-                                <span className="round-circle bg-warning">{numCart}</span>
+                                <span className="round-circle-cart bg-warning">{numCart}</span>
                             )}
                         </Button>
                     </Nav.Link>
-                    <Form inline>
+                    <Form>
                         <Row>
                             <Col className="pe-0">
                                 <Form.Control
