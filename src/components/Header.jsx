@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Navbar, Nav, Form, Button, Row, Col } from "react-bootstrap";
 import reactLogo from '../assets/react.svg';
 import { useCart } from "../context/CartContext";
+import { BsFillPersonFill, BsCart } from 'react-icons/bs';
 
 export default function Header(){
     const { numCart } = useCart();
@@ -41,7 +42,7 @@ export default function Header(){
 
                         {!isAuth ? (
                             <Nav.Link as={Link} to="/login" className="text-md-center">
-                                <i className="bi bi-person-fill"></i>
+                                <BsFillPersonFill className="mb-1"/>
                             </Nav.Link>
                         ) : (<div className="pt-1">
                             <Button variant="outline-light" onClick={closeSession} className="btn-sm p-1">Log out</Button></div>
@@ -50,7 +51,7 @@ export default function Header(){
                     </Nav>
                     <Nav.Link as={Link} to="/cart" className="me-2">
                         <Button className="px-2 position-relative text-white">
-                            <i className="bi bi-cart fs-5"></i>
+                            <BsCart size={22} />
                             {numCart > 0 && (
                                 <span className="round-circle-cart bg-warning">{numCart}</span>
                             )}

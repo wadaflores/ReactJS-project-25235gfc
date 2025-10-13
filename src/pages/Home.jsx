@@ -1,6 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
 import RandomDog from "../components/RandomDog";
 import { Card } from "react-bootstrap";
+import { BsTruck, BsCreditCard, BsShieldLock } from 'react-icons/bs';
+import MustHaveProducts from '../components/MustHaveProducts';
 
 export default function Home(){
     return (
@@ -31,12 +33,16 @@ export default function Home(){
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <div class="flex-div">
+            <div className="my-4 p-2 rounded-2" style={{backgroundColor: "lightgray"}}>
+                <h2 className='text-light'>Must Have</h2>
+                <MustHaveProducts /></div>
+            <hr/>
+            <div className="flex-div">
                 <div className="py-2 pe-4 card-div">
                     <Card border="info" >
                         <Card.Body className='p-0' >
                             <Card.Title className="bg-info text-light p-2 fs-4 rounded-top border-2">
-                                <i className="bi bi-truck pe-2"></i>
+                                <BsTruck size={34} className="pe-2"/>
                                 Fast Delivery
                             </Card.Title>
                             <div className='p-2'>
@@ -53,7 +59,7 @@ export default function Home(){
                     <Card border="primary">
                         <Card.Body className='p-0' >
                             <Card.Title className="bg-primary text-light p-2 fs-4 rounded-top border-2">
-                                <i class="bi bi-credit-card pe-2"></i>
+                                <BsCreditCard size={34} className="pe-2"/>
                                 Pay by card
                             </Card.Title>
                             <div className='p-2'>
@@ -70,7 +76,7 @@ export default function Home(){
                     <Card border="warning">
                         <Card.Body className='p-0' >
                             <Card.Title className="bg-warning text-light p-2 fs-4 rounded-top border-2">
-                                <i class="bi bi-shield-lock pe-2"></i>
+                                <BsShieldLock size={34} className="pe-2"/>
                                 Stay safe!
                             </Card.Title>
                             <div className='p-2'>
@@ -78,7 +84,7 @@ export default function Home(){
                                 <Card.Text>
                                     Some quick example text to build on the card title and make up the bulk of the card's content.
                                 </Card.Text>
-                                <Card.Link href="/contact" className='text-warning link-hover'>More ionfo</Card.Link>
+                                <Card.Link href="/contact" className='text-warning link-hover'>More info</Card.Link>
                             </div>
                         </Card.Body>
                     </Card>    
