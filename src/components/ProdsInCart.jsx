@@ -66,7 +66,7 @@ export default function ProdsInCart() {
                                             <img
                                                 src={product.image}
                                                 alt={product.title}
-                                                style={{ height: "50px", objectFit: "contain" }}
+                                                style={{ height: "50px", objectFit: "contain", maxWidth: "inherit" }}
                                             />
                                         </Col>
                                         <Col md={5}>

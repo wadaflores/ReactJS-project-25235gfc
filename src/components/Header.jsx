@@ -3,14 +3,18 @@ import { Container, Navbar, Nav, Form, Button, Row, Col } from "react-bootstrap"
 import reactLogo from '../assets/react.svg';
 import { useCart } from "../context/CartContext";
 import { BsFillPersonFill, BsCart } from 'react-icons/bs';
+import { useAuth } from '../context/AuthContext';
 
 export default function Header(){
     const { numCart } = useCart();
+    const { logout } = useAuth();
     const navigate = useNavigate();
-    const isAuth = localStorage.getItem('auth')==='true';
-
+    //const isAuth = localStorage.getItem('auth')==='true';
+        const {token, userAuth} = useAuth();
+    
     const closeSession=()=>{
         localStorage.removeItem('auth');
+        logout();
         navigate('/login')
     }
 
@@ -34,13 +38,13 @@ export default function Header(){
                             Contact
                         </Nav.Link>
 
-                        {isAuth && (
+                        {token && userAuth && (
                             <Nav.Link as={Link} to="/admin" className="text-md-center">
                                 | <span className="text-decoration-underline ms-2">Admin</span>
                             </Nav.Link>
                         )}
 
-                        {!isAuth ? (
+                        {!token || !userAuth ? (
                             <Nav.Link as={Link} to="/login" className="text-md-center">
                                 <BsFillPersonFill className="mb-1"/>
                             </Nav.Link>

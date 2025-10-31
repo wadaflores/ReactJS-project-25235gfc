@@ -18,15 +18,21 @@ import ProductDetail from "./pages/ProductDetail";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Login from './pages/Login';
+import Login2 from './pages/Login2';
 import Admin from './pages/Admin';
+import Dashboard from './pages/Dashboard';
 
 import { CartProvider } from "./context/CartContext";
+import { UserProvider } from "./context/UserContext";
 import AuthenticatedRoute from './components/AuthenticatedRoute';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
     // const [count, setCount] = useState(0)
     return (
+      <AuthProvider>
       <CartProvider>
+      <UserProvider>
         <div className='app-container'>
           <Router>
             <Header/>
@@ -39,7 +45,9 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/cart" element={<Cart/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/login2" element={<Login2/>}/>
                 <Route path="/admin" element={<AuthenticatedRoute><Admin/></AuthenticatedRoute>}/>
+                <Route path="/dashboard" element={<AuthenticatedRoute><Dashboard/></AuthenticatedRoute>}/>
               </Routes>
   {/*   
               <a href="https://vite.dev" target="_blank">
@@ -65,7 +73,9 @@ function App() {
             <Footer/>
           </Router>
         </div>
+      </UserProvider>
       </CartProvider>
+      </AuthProvider>
     )
 }
 
