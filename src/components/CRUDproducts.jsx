@@ -24,7 +24,7 @@ const CRUDproducts = () => {
   const [editId, setEditId] = useState(null);
 
 //fetch --> get products
-   const getProducts = () => {
+  const getProducts = () => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setProducts(data))
@@ -34,7 +34,7 @@ const CRUDproducts = () => {
 //close modal 
   const handleClose = () => {
     setShow(false);
-    setForm({ title: "", price: "", description: "", category: "", image: "", rating: {rate:"", count: "",}, stock: "", });
+    setForm({ title: "", price: "", description: "", category: "", image: "", stock: "", });
     setEditId(null);
   };
 
@@ -44,10 +44,6 @@ const CRUDproducts = () => {
     if (product) {
       setForm({
         ...product,
-        price: Number(product.price),
-        stock: Number(product.stock),
-        rate: Number(product.rating.rate),
-        count: Number(product.rating.count)
       });
       setEditId(product.id);
     }
@@ -59,10 +55,8 @@ const CRUDproducts = () => {
 
     const productData = {
       ...form,
-      price: Number(form.price),
-      stock: Number(form.stock),
-      rate: Number(form.rating.rate),
-      count: Number(form.rating.count)
+      price: Math.max(0, Number(form.price)),
+      stock: Math.max(0, Number(form.stock)),
     };
 
     const method = editId ? "PUT" : "POST";
@@ -143,6 +137,7 @@ const CRUDproducts = () => {
   return (
     <div className="container mt-4">
       <h2>Products CRUD</h2>
+      <p>Disclaimer: To preserve the look and feel, CRUD will only reflect on "Must have" products at /home page.</p>
       <Button className="mb-3" onClick={() => handleShow()}>
         Add Product
       </Button>
@@ -243,9 +238,11 @@ const CRUDproducts = () => {
               <Form.Label>Price</Form.Label>
               <Form.Control
                 type="number"
+                min="0"
+                step="0.01"
                 value={form.price}
                 onChange={(e) =>
-                  setForm({ ...form, price: Number(e.target.value) })
+                  setForm({ ...form, price: e.target.value })
                 }
                 required
               />
@@ -255,9 +252,10 @@ const CRUDproducts = () => {
               <Form.Label>Stock</Form.Label>
               <Form.Control
                 type="number"
+                min="0"
                 value={form.stock}
                 onChange={(e) =>
-                  setForm({ ...form, stock: Number(e.target.value) })
+                  setForm({ ...form, stock: e.target.value })
                 }
                 required
               />

@@ -3,7 +3,7 @@ import ProductsList from './ProductsList';
 const MustHaveProducts = () => {
     return (
         <div>
-            <ProductsList category='jewelery'/>
+            <ProductsList mockApi limit={4} showFilters={false} />
         </div>
 
     );

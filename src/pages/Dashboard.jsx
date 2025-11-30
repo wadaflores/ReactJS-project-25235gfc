@@ -16,11 +16,9 @@ const Dashboard=()=>{
         <div className='Container mt-5'>
             <h2>Admin Dashboard</h2>
             <p>Ruta protegida</p>
-            <Button className='btn btn-info' onClick={() => navigate("/CRUDproducts")}>Products CRUD</Button>
+            <Button className='btn btn-info me-2' onClick={() => navigate("/CRUDproducts")}>Products CRUD</Button>
+            <Button className='btn btn-secondary' onClick={handleLogout}>Logout</Button>
             <UserCard/>
-            <div className='d-flex flex-row-reverse mt-5'>
-                <Button className='btn btn-secondary' onClick={handleLogout}>Logout</Button>
-            </div>
         </div>
     )
 }
