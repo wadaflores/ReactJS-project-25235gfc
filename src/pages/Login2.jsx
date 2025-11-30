@@ -17,7 +17,7 @@ export default function Login2() {
         const success = login(userName, password);
 
         if (success) {
-            navigate("/dashboard");
+            navigate("/admin");
         } else {
             setShowAlert(true);
             setError('Wrong user info!');

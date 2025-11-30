@@ -16,7 +16,7 @@ export default function Login() {
         const success = login(email, password);
 
         if (success) {
-            navigate("/admin");
+            navigate("/dashboard");
         } else {
             setShowAlert(true);
         }
@@ -26,7 +26,7 @@ export default function Login() {
         <Container className="d-flex flex-column justify-content-center align-items-center" style={{ height: "80vh" }}>
             {showAlert && (
                 <Alert variant="danger" className="fs-6" onClose={() => setShowAlert(false)} dismissible  >
-                    <strong>Oh snap!</strong> Please enter both <b>email</b> and <b>password</b>.
+                    <strong>Oh snap!</strong> Please enter both <b>email</b> and <b>password</b> correctly.
                 </Alert>
             )}
             <Card className="p-4 shadow-sm" style={{ maxWidth: "425px", width: "100%", height:"350px" }}>

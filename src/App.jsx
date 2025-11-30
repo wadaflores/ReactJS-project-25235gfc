@@ -26,10 +26,13 @@ import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 import { AuthProvider } from './context/AuthContext';
+import CRUDproducts from './components/CRUDproducts';
+import { SearchContext, SearchProvider } from './context/SearchContext';
 
 function App() {
     // const [count, setCount] = useState(0)
     return (
+      <SearchProvider>
       <AuthProvider>
       <CartProvider>
       <UserProvider>
@@ -48,6 +51,7 @@ function App() {
                 <Route path="/login2" element={<Login2/>}/>
                 <Route path="/admin" element={<AuthenticatedRoute><Admin/></AuthenticatedRoute>}/>
                 <Route path="/dashboard" element={<AuthenticatedRoute><Dashboard/></AuthenticatedRoute>}/>
+                <Route path="/CRUDproducts" element={<AuthenticatedRoute><CRUDproducts/></AuthenticatedRoute>}/>
               </Routes>
   {/*   
               <a href="https://vite.dev" target="_blank">
@@ -76,6 +80,7 @@ function App() {
       </UserProvider>
       </CartProvider>
       </AuthProvider>
+      </SearchProvider>
     )
 }
 

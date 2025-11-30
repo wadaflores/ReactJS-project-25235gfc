@@ -2,7 +2,7 @@ import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { Button, Card, ListGroup, Row, Col } from "react-bootstrap";
 import { BsCart, BsTrash3 } from 'react-icons/bs';
-
+import Swal from 'sweetalert2'
 
 export default function ProdsInCart() {
     const { cart, setCart, emptyCart } = useCart();
@@ -48,7 +48,7 @@ export default function ProdsInCart() {
             <div className="text-center mt-5">
                 <BsCart size={40} color="#999" className="mb-3" />
                 <h5 className="text-muted">Your cart is empty</h5>
-                <Button as={Link} to="/products">Shop now!</Button>      
+                <Button className='btn btn-info' as={Link} to="/products">Shop now!</Button>      
             </div>
         );
     }

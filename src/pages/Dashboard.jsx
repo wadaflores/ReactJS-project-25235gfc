@@ -1,5 +1,7 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { UserCard } from '../components/UserCard';
+import { Button } from 'react-bootstrap';
 
 const Dashboard=()=>{
     const { logout } = useAuth();
@@ -12,9 +14,13 @@ const Dashboard=()=>{
 
     return(
         <div className='Container mt-5'>
-            <h2>Dashboard</h2>
+            <h2>Admin Dashboard</h2>
             <p>Ruta protegida</p>
-            <button className='btn btn-secondary' onClick={handleLogout}>Logout</button>
+            <Button className='btn btn-info' onClick={() => navigate("/CRUDproducts")}>Products CRUD</Button>
+            <UserCard/>
+            <div className='d-flex flex-row-reverse mt-5'>
+                <Button className='btn btn-secondary' onClick={handleLogout}>Logout</Button>
+            </div>
         </div>
     )
 }
