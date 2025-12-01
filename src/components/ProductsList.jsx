@@ -6,7 +6,7 @@ import { useSearch } from "../context/SearchContext";
 
 const ProductsList = ({category = null , mockApi, limit, showFilters = true }) => {
     const [products, setProducts] = useState([]);
-    const [filterByPice, setFilterByPrice] = useState("none");
+    const [filterByPrice, setFilterByPrice] = useState("none");
     const [filterByCategory, setFilterByCategory] = useState("all");
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
@@ -21,15 +21,15 @@ const ProductsList = ({category = null , mockApi, limit, showFilters = true }) =
         filteredProducts = filteredProducts.filter((prod) => prod.category === filterByCategory);
     }
 
-    if (filterByPice === "asc") filteredProducts.sort((a, b) => a.price - b.price);
-    if (filterByPice === "desc") filteredProducts.sort((a, b) => b.price - a.price);
+    if (filterByPrice === "asc") filteredProducts.sort((a, b) => a.price - b.price);
+    if (filterByPrice === "desc") filteredProducts.sort((a, b) => b.price - a.price);
 
     useEffect(()=>{
             let url = 'https://fakestoreapi.com/products';
             if (category){
                 url = `https://fakestoreapi.com/products/category/${category}`;
             }
-            if(mockApi && limit){
+            if(mockApi){
                 url = "https://68fffe00e02b16d1753fd185.mockapi.io/Products";
             }
             fetch(url)
@@ -73,7 +73,7 @@ const ProductsList = ({category = null , mockApi, limit, showFilters = true }) =
                 </Col>
                 <Col md={2}>
                     <Form.Select
-                        value={filterByPice}
+                        value={filterByPrice}
                         onChange={(e) => setFilterByPrice(e.target.value)}
                     >
                         <option value="none">Sort by price:</option>

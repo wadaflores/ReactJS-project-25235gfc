@@ -115,7 +115,7 @@ export default function ProdsInCart() {
                             </ListGroup.Item>
                             <ListGroup.Item className="d-flex justify-content-between border-0 px-2 text-success">
                                 <span>Shipping</span>
-                                <span>{netPrice > 100 ? "Free" : "US$ " + (netPrice * 0.1).toFixed(2)}</span>
+                                <span>{netPrice > 500 ? "Free" : "US$ " + (netPrice * 0.1).toFixed(2)}</span>
                             </ListGroup.Item>
                             <ListGroup.Item className="d-flex justify-content-between border-top px-2 bg-light mt-2 text-dark">
                                 <strong>Total</strong>

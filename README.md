@@ -1,6 +1,6 @@
 # React Project - Talento Tech 2025 
 
-This is a Guadalupe's project while learning ReactJS @Talento Tech.
+This is Guadalupe's ecommerce project for a ReactJS course @Talento Tech.
 
 ## React Compiler
 

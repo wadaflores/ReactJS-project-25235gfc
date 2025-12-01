@@ -25,7 +25,7 @@ const ProductCard = ({prod, addToCart}) => {
                 <div className="text-end m-2">
                     {getCategory(prod.category)}
                 </div>
-                <Card.Img variant="top" src={prod.image} style={{ objectFit: "contain", height: "150px" }}/>
+                <Card.Img variant="top" src={prod.image} style={{ objectFit: "contain", height: "150px" }} alt={"imagen del producto " + prod.title} />
                 <hr/>
                 <Card.Body className="pt-0">
                     <Card.Title className="truncate" data-bs-original-title={prod.title}>
