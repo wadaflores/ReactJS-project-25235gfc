@@ -2,7 +2,7 @@ import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { Button, Card, ListGroup, Row, Col } from "react-bootstrap";
 import { BsCart, BsTrash3 } from 'react-icons/bs';
-
+import Swal from 'sweetalert2'
 
 export default function ProdsInCart() {
     const { cart, setCart, emptyCart } = useCart();
@@ -48,7 +48,7 @@ export default function ProdsInCart() {
             <div className="text-center mt-5">
                 <BsCart size={40} color="#999" className="mb-3" />
                 <h5 className="text-muted">Your cart is empty</h5>
-                <Button as={Link} to="/products">Shop now!</Button>      
+                <Button className='btn btn-info' as={Link} to="/products">Shop now!</Button>      
             </div>
         );
     }
@@ -66,7 +66,7 @@ export default function ProdsInCart() {
                                             <img
                                                 src={product.image}
                                                 alt={product.title}
-                                                style={{ height: "50px", objectFit: "contain" }}
+                                                style={{ height: "50px", objectFit: "contain", maxWidth: "inherit" }}
                                             />
                                         </Col>
                                         <Col md={5}>
@@ -115,7 +115,7 @@ export default function ProdsInCart() {
                             </ListGroup.Item>
                             <ListGroup.Item className="d-flex justify-content-between border-0 px-2 text-success">
                                 <span>Shipping</span>
-                                <span>{netPrice > 100 ? "Free" : "US$ " + (netPrice * 0.1).toFixed(2)}</span>
+                                <span>{netPrice > 500 ? "Free" : "US$ " + (netPrice * 0.1).toFixed(2)}</span>
                             </ListGroup.Item>
                             <ListGroup.Item className="d-flex justify-content-between border-top px-2 bg-light mt-2 text-dark">
                                 <strong>Total</strong>

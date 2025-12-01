@@ -26,7 +26,7 @@ export default function ProductDetail(){
             <Row className="d-flex align-items-center px-5">
                 <Col md={4} lg={3} className="ms-4 mb-4">
                     <Card className="border-0">
-                        <Card.Img variant="top" src={product.image} style={{ objectFit: "contain", height: "200px" }}/>                               
+                        <Card.Img variant="top" src={product.image} style={{ objectFit: "contain", height: "200px" }} alt={"imagen del producto " + product.title}/>                               
                     </Card>
                 </Col>
                 <Col className="me-4">
