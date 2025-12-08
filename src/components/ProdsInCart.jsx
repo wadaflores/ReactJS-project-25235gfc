@@ -2,7 +2,6 @@ import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { Button, Card, ListGroup, Row, Col } from "react-bootstrap";
 import { BsCart, BsTrash3 } from 'react-icons/bs';
-import Swal from 'sweetalert2'
 
 export default function ProdsInCart() {
     const { cart, setCart, emptyCart } = useCart();

@@ -137,7 +137,7 @@ const CRUDproducts = () => {
   return (
     <div className="container mt-4">
       <h2>Products CRUD</h2>
-      <p>Disclaimer: To preserve the look and feel, CRUD will only reflect on "Must have" products at /home page.</p>
+      <p>Disclaimer: To preserve the look and feel, CRUD will only reflect on "Must have" products at home page.</p>
       <Button className="mb-3" onClick={() => handleShow()}>
         Add Product
       </Button>
